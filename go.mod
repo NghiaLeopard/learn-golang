@@ -1,3 +1,3 @@
-module example.com/first-init
+module example.com/main
 
 go 1.22.5
