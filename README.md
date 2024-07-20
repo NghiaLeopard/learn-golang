@@ -20,3 +20,13 @@ use library strconv => strconv.ParseFloat(result)
 convention: 1 directory is 1 package
 
 Files have same package used together in directory
+
+-- pointer
+
+var ptn *int : declare pointer to an integer
+
+user :=23
+
+ptn = &user : ptn is pointer to address variable user
+
+*ptn : is value of ptn pointer to address
