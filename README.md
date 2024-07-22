@@ -177,3 +177,10 @@ func printSomething(value interface{}) {
 
 -CHECK TYPE VALUE
 inputVal,ok := value.(int)
+
+
+--Generics
+
+func add[T int | float64 | string](a, b T) T {
+	return a + b
+}
