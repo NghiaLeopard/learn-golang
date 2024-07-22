@@ -21,7 +21,7 @@ convention: 1 directory is 1 package
 
 Files have same package used together in directory
 
--- pointer
+-- POINTER
 
 var ptn \*int : declare pointer to an integer
 
@@ -46,21 +46,20 @@ Trả về giá trị (return values): Tương tự, khi một hàm trả về m
 +| import "fmt"
 
 func square(x int) int {
-    x *= x        // Bình phương giá trị x bên trong hàm
-    return x
+x \*= x // Bình phương giá trị x bên trong hàm
+return x
 }
 
 func main() {
-    num := 5
-    result := square(num)
-    fmt.Println("Giá trị gốc:", num)   // In ra 5 (giá trị gốc không thay đổi)
-    fmt.Println("Kết quả bình phương:", result) // In ra 25
+num := 5
+result := square(num)
+fmt.Println("Giá trị gốc:", num) // In ra 5 (giá trị gốc không thay đổi)
+fmt.Println("Kết quả bình phương:", result) // In ra 25
 }
-
 
 return x is value copy . result receive value x . I don't change value result then x also change , should return value must copy to affect value in func
 
--- struct
+-- STRUCT
 
 var appUser *user.User
 var appUser1 *user.User
@@ -98,8 +97,8 @@ func (u \*User): you adjust value of pointer to that address struct
 // fmt.Println(u.firstName,u.lastName,u.birthDate)
 // }
 
+-BUFIO
 
---Bufio
 bufio.NewReader:
 
 Tạo ra một bộ đệm để lưu trữ dữ liệu đọc từ nguồn.
@@ -109,28 +108,72 @@ ReadString('\n'):
 Đọc dữ liệu từ bộ đệm cho đến khi gặp ký tự xuống dòng (\n).
 Quan trọng: Nó KHÔNG bỏ đi phần dữ liệu còn lại. Phần dữ liệu chưa đọc (sau ký tự \n) vẫn còn trong bộ đệm và có thể được đọc tiếp bằng các lệnh đọc khác.
 
-
 type Note struct {
-	Title   string `json:"title"`
-	Content string `json:"content"`
-	CreatedAt time.Time `json:"created_at"`
+Title string `json:"title"`
+Content string `json:"content"`
+CreatedAt time.Time `json:"created_at"`
 }
 
 like talked : want use data difference package
 
 func (note Note) Save() error {
-	fileName := strings.ReplaceAll(note.Title," ","_") 
-	fileName = strings.ToLower(fileName)  + ".json"
+fileName := strings.ReplaceAll(note.Title," ","\_")
+fileName = strings.ToLower(fileName) + ".json"
 
-	json,err := json.Marshal(note)
+    json,err := json.Marshal(note)
 
-	if err != nil {
-		return err
-	}
+    if err != nil {
+    	return err
+    }
 
-	return os.WriteFile(fileName,json,0644)
+    return os.WriteFile(fileName,json,0644)
+
 }
 
 tag struct : override name in json with tag struct ``
 
 Convert json data: json.Marshal
+
+-- INTERFACE
+
+Interface like a contract
+
+type saver interface {
+Save() error
+}
+
+if interface is just have one method then name interface combine to name method ,add er to last name.
+
+interface is required input and not important input
+It is care about that data have user method in that interface
+
+- EMBED INTERFACE
+
+\*type saver interface {
+Save() error
+}
+
+\*type outputtable interface {
+saver
+Print()
+}
+
+interface{} = any
+
+-SWITCH TYPE
+
+when combine use any type
+
+func printSomething(value interface{}) {
+	switch value.(type) {
+	case int: 
+	fmt.Printf("Integer: %d\n",value)
+	case float64: 
+	fmt.Printf("Integer: %f\n",value)
+	case string:
+	fmt.Printf("string: %s\n",value)
+	}
+}
+
+-CHECK TYPE VALUE
+inputVal,ok := value.(int)

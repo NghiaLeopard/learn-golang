@@ -41,5 +41,5 @@ func New(title, content string) (Note,error) {
 }
 
 func (note Note) Print() {
-	fmt.Printf("Note title: %v has following content:\n\n %v",note.Title,note.Content)
+	fmt.Printf("Note title: %v has following content:\n\n %v\n",note.Title,note.Content)
 }
