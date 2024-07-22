@@ -98,3 +98,39 @@ func (u \*User): you adjust value of pointer to that address struct
 // fmt.Println(u.firstName,u.lastName,u.birthDate)
 // }
 
+
+--Bufio
+bufio.NewReader:
+
+Tạo ra một bộ đệm để lưu trữ dữ liệu đọc từ nguồn.
+Giúp cải thiện hiệu suất đọc dữ liệu.
+ReadString('\n'):
+
+Đọc dữ liệu từ bộ đệm cho đến khi gặp ký tự xuống dòng (\n).
+Quan trọng: Nó KHÔNG bỏ đi phần dữ liệu còn lại. Phần dữ liệu chưa đọc (sau ký tự \n) vẫn còn trong bộ đệm và có thể được đọc tiếp bằng các lệnh đọc khác.
+
+
+type Note struct {
+	Title   string `json:"title"`
+	Content string `json:"content"`
+	CreatedAt time.Time `json:"created_at"`
+}
+
+like talked : want use data difference package
+
+func (note Note) Save() error {
+	fileName := strings.ReplaceAll(note.Title," ","_") 
+	fileName = strings.ToLower(fileName)  + ".json"
+
+	json,err := json.Marshal(note)
+
+	if err != nil {
+		return err
+	}
+
+	return os.WriteFile(fileName,json,0644)
+}
+
+tag struct : override name in json with tag struct ``
+
+Convert json data: json.Marshal

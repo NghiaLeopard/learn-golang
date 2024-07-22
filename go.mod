@@ -1,3 +1,3 @@
-module example.com/struct
+module example.com/main
 
 go 1.22.5
