@@ -212,3 +212,65 @@ sliceArr := arr[1:]
 \*restSlice := []string{"learn go","learn backend"}
 
 result := appand(sliceArr,restSlice...)
+
+--\* MAP
+
+<!-- Declare websites : create map -->
+
+website := map[string]string{"Google": "https://google.com", "aws": "https://aws.com"}
+
+    fmt.Println(website)
+
+
+    fmt.Println(website["Google"])
+
+<!-- add Map -->
+
+website["linkedIn"] = "https://linkedIn.com"
+
+fmt.Println(website)
+
+<!-- Delete Map -->
+
+delete(website,"Google")
+
+fmt.Println(website)
+
+\* Special make function
+
+<!-- Slice -->
+
+mySlice := make([]string, 5) // Tạo slice có độ dài 5
+fmt.Println(mySlice) // ["" "" "" "" ""]
+fmt.Println(len(mySlice)) // 5
+fmt.Println(cap(mySlice)) // 5
+
+mySlice := make([]string, 3, 5) // Tạo slice có độ dài 3, sức chứa 5
+fmt.Println(mySlice) // ["" "" ""]
+fmt.Println(len(mySlice)) // 3
+fmt.Println(cap(mySlice)) // 5
+
+<!-- Map -->
+
+mapUrl := make(map[string]string,5)
+
+cap(mapUrl) = 5
+
+Make used to don't pre-allocate
+
+--\*Type alias
+Trong Go (Golang), type alias là một cách để tạo ra một tên mới (biệt danh) cho một kiểu dữ liệu đã tồn tại. Điều này không tạo ra một kiểu mới hoàn toàn, mà chỉ đơn giản là cung cấp một cách khác để tham chiếu đến kiểu gốc.
+
+type floatMap map[string]float64
+
+type alias: floatMap -> reference to address original Map
+
+\*loop array,slice,map
+
+With Map : key,value
+With Slice: index,value
+
+for key,value := range website {
+fmt.Println("Key: ",key)
+fmt.Println("Value: ",value)
+}
