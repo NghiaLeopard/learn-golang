@@ -147,7 +147,7 @@ if interface is just have one method then name interface combine to name method 
 interface is required input and not important input
 It is care about that data have user method in that interface
 
-- EMBED INTERFACE
+-   EMBED INTERFACE
 
 \*type saver interface {
 Save() error
@@ -165,22 +165,50 @@ interface{} = any
 when combine use any type
 
 func printSomething(value interface{}) {
-	switch value.(type) {
-	case int: 
-	fmt.Printf("Integer: %d\n",value)
-	case float64: 
-	fmt.Printf("Integer: %f\n",value)
-	case string:
-	fmt.Printf("string: %s\n",value)
-	}
+switch value.(type) {
+case int:
+fmt.Printf("Integer: %d\n",value)
+case float64:
+fmt.Printf("Integer: %f\n",value)
+case string:
+fmt.Printf("string: %s\n",value)
+}
 }
 
 -CHECK TYPE VALUE
 inputVal,ok := value.(int)
 
-
---Generics
+--\*Generics
 
 func add[T int | float64 | string](a, b T) T {
-	return a + b
+return a + b
 }
+
+--\*Array
+
+Declare
+arr := [4]float64{10.10,10.2,12.2,14.1}
+
+--\* Slice arr:
+
+Trong Go, slice được xây dựng dựa trên mảng. Hãy tưởng tượng slice như một cửa sổ nhìn vào một phần của mảng gốc. Cửa sổ này có thể được điều chỉnh (cắt)
+
+slice like 1 pointer
+
+Can change value in main array
+
+Slice don't copy array
+
+Thay đổi kích thước: Slice có thể tự động tăng kích thước khi cần. Khi bạn thêm phần tử vượt quá chiều dài hiện tại nhưng vẫn nằm trong dung lượng hiện tại, slice sẽ sử dụng không gian trống có sẵn trong mảng gốc. Tuy nhiên, nếu bạn thêm phần tử vượt quá dung lượng, Go sẽ tự động tạo một mảng mới lớn hơn, sao chép các phần tử hiện có sang mảng mới và cập nhật slice để trỏ đến mảng mới này.
+
+sliceArr := arr[1:3]
+
+start with index 1 and just get value of index: 1,2
+Then exclude index 3
+
+sliceArr := arr[:3]
+sliceArr := arr[1:]
+
+\*restSlice := []string{"learn go","learn backend"}
+
+result := appand(sliceArr,restSlice...)

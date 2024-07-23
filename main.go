@@ -2,12 +2,63 @@ package main
 
 import "fmt"
 
+type Product struct {
+    title string
+    id int
+    price int
+}
+
 func main() {
-	value := add(1, 2)
+    // exercise 1
+	hobbies := [3]string{"learn","study","gym"}
+    fmt.Println(hobbies)
 
-	fmt.Println(value)
+
+    // exercise 2
+ 
+    fmt.Println(hobbies[0])
+
+    newArr := hobbies[1:]
+
+    newArr[0] = "studying"
+
+    fmt.Println(newArr,hobbies)
+
+    // exercise 3
+    // cap have three, capacity will contain 
+
+//     hobbies:     [ learn | study | gym ]
+//                      ^       ^       ^
+//                      |       |       |
+//     createSlice: [ learn | study ] 
+    // createSlice := hobbies[:2]
+
+    // fmt.Println(createSlice)
+
+    // // exercise 4
+    // fmt.Println(cap(createSlice))
+
+    // createSlice = createSlice[1:3]
+    // fmt.Println(createSlice)
+
+    // exercise 5 
+    // dynamicArr := []{hobbies,newArr}
+
+    // exercise 7
+    // dynamicArr := []Product{Product{
+    //     title: "Nghia",
+    //     id: 1,
+    //     price: 1000000000,
+    // },Product{
+    //     title: "Beo",
+    //     id: 2,
+    //     price: 1000000000,
+    // }}
+
+    // newDynamicArr := append(dynamicArr,Product{title: "Định",
+    // id: 3,
+    // price: 1000000000,})
+
+    // fmt.Println(newDynamicArr)
 }
 
-func add[T int | float64 | string](a, b T) T {
-	return a + b
-}
