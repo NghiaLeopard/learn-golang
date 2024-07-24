@@ -2,30 +2,23 @@ package main
 
 import "fmt"
 
+type transform func(int) int
+
 func main() {
-	website := map[string]string{"Google": "https://google.com", "aws": "https://aws.com"}
+	emptyArr := []int{}
+	numbers := []int{1,2,3,4,5}
 
-	// fmt.Println(website)
-
-    // fmt.Println(website["Google"])
-
-    // website["linkedIn"] = "https://linkedIn.com"
-
-	// fmt.Println(website)
-
-    // delete(website,"Google")
-
-	// fmt.Println(website)
+	newArr := append(emptyArr,numbers...)
 
 
-    websites := make([]string,2,5)
 
-    fmt.Print(websites,len(websites),cap(websites))
+	result := sumup(1,2,3,4,5)
 
-    // mapUrl := make(map[string]string,5)
+	fmt.Println(newArr)
+	fmt.Println(result)
+}
 
-    for key,value := range website {
-        fmt.Println("Key: ",key)
-        fmt.Println("Value: ",value)
-    }
+func sumup(numbers ...int) int {
+	fmt.Print(numbers)
+	return 0
 }
